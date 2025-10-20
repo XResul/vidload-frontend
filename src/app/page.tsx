@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Sidebar from "../../components/Layout/Sidebar";
 export default function Home() {
   return (
     <div>
