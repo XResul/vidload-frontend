@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="flex">
       {/* Ana içerik */}
       <div
-        className={`flex flex-col flex-1 min-h-screen bg-gray-50 transition-all duration-300
+        className={`flex flex-col flex-1  bg-gray-50 transition-all duration-300
         ${isOpen ? "ml-64" : "ml-12"}`}
       >
         {/* Navbar */}
