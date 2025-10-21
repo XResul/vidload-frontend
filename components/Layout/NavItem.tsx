@@ -1,18 +1,46 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import Link from "next/link";
 
 interface NavItemProps {
-  icon: React.ReactNode;
+  href: string;
+  icon: ReactNode;
   label: string;
-  open: boolean;
+  isOpen: boolean;
+  withArrow?: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ icon, label, open }) => {
+export default function NavItem({
+  href,
+  icon,
+  label,
+  isOpen,
+  withArrow,
+}: NavItemProps) {
   return (
-    <button className="w-full flex items-center gap-4 p-2 hover:bg-gray-800 rounded-lg text-sm transition-colors">
-      {icon}
-      {open && <span>{label}</span>}
-    </button>
-  );
-};
+    <Link href={href}>
+      <div className="flex items-center justify-between p-2 hover:bg-[#cedb91] rounded-2xl text-white transition-colors cursor-pointer">
+        <div className="flex items-center space-x-2">
+          {icon}
+          {isOpen && <span>{label}</span>}
+        </div>
 
-export default NavItem;
+        {/* Sağ ok simgesi (isteğe bağlı) */}
+        {isOpen && withArrow && (
+          <svg
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        )}
+      </div>
+    </Link>
+  );
+}

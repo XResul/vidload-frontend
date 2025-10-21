@@ -1,106 +1,100 @@
 "use client";
-import Link from "next/link";
 import React, { useState } from "react";
+import NavItem from "./NavItem";
 import {
   Home,
   Tv,
   SquarePlay,
-  ChevronRight,
   History,
   ListVideo,
   ThumbsUp,
   ArrowDownToLine,
-  User,
-  Film,
   Menu,
 } from "lucide-react";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className="fixed top-0 left-0 w-full h-screen bg-black/30 z-30"
+        ></div>
+      )}
+
       {/* Hamburger Menü */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-2 z-50 p-2 bg-[#095f79] text-white rounded-lg"
+        className="fixed top-4 left-2 z-50 p-2 bg-[#095f79] text-white rounded-lg cursor-pointer "
       >
         <Menu size={20} />
       </button>
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen bg-[#095f79] text-white transition-all duration-300 z-40
-          ${isOpen ? "w-64" : "w-16"}`}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`fixed top-0 left-0 h-screen bg-[#095f79] text-white transition-all duration-300 z-40 cursor-pointer
+          ${isOpen ? "w-64" : "w-12"}`}
       >
         <nav className="flex flex-col mt-12 p-2 space-y-2">
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <Home size={20} />
-              {isOpen && <span>Home</span>}
-            </div>
-          </Link>
+          <NavItem
+            href="#"
+            icon={<Home size={20} />}
+            label="Home"
+            isOpen={isOpen}
+          />
+          <NavItem
+            href="#"
+            icon={<Tv size={20} />}
+            label="Shorts"
+            isOpen={isOpen}
+          />
+          <NavItem
+            href="#"
+            icon={<SquarePlay size={20} />}
+            label="Videolar"
+            isOpen={isOpen}
+          />
+          {/* ... diğer NavItem’lar ... */}
+          <div className="h-[2px] bg-gray-300 w-full  rounded"></div>
 
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <Tv size={20} />
-              {isOpen && <span>Shorts</span>}
-            </div>
-          </Link>
+          {/* Geçmiş */}
+          <NavItem
+            href="#"
+            icon={<History size={20} />}
+            label="Geçmiş"
+            isOpen={isOpen}
+          />
 
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <SquarePlay size={20} />
-              {isOpen && <span>Videolar</span>}
-            </div>
-          </Link>
+          {/* Oynatma Listeleri*/}
+          <NavItem
+            href="#"
+            icon={<ListVideo size={20} />}
+            label="Oynatma Listeleri"
+            isOpen={isOpen}
+          />
+          <NavItem
+            href="#"
+            icon={<SquarePlay size={20} />}
+            label="Videolar"
+            isOpen={isOpen}
+          />
 
-          <div className="h-[1px] bg-white opacity-70 my-2"></div>
-
-          <Link href={"#"}>
-            <div className="flex items-center justify-between p-2 hover:bg-[#cedb91] rounded-2xl">
-              <div className="flex items-center gap-2">
-                <User size={20} />
-                {isOpen && <span>Siz</span>}
-              </div>
-              {isOpen && <ChevronRight size={16} />}
-            </div>
-          </Link>
-
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <History size={20} />
-              {isOpen && <span>Geçmiş</span>}
-            </div>
-          </Link>
-
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <ListVideo size={20} />
-              {isOpen && <span>Oynatma Listeleri</span>}
-            </div>
-          </Link>
-
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <Film size={20} />
-              {isOpen && <span>Videolarınız</span>}
-            </div>
-          </Link>
-
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <ThumbsUp size={20} />
-              {isOpen && <span>Beğendiğim Videolar</span>}
-            </div>
-          </Link>
-
-          <Link href={"#"}>
-            <div className="flex items-center gap-2 p-2 hover:bg-[#cedb91] rounded-2xl">
-              <ArrowDownToLine size={20} />
-              {isOpen && <span>İndirilenler</span>}
-            </div>
-          </Link>
+          {/* İndirilenler */}
+          <NavItem
+            href="#"
+            icon={<ArrowDownToLine size={20} />}
+            label="indirilenler"
+            isOpen={isOpen}
+          />
+          {/* İndirilenler */}
+          <NavItem
+            href="#"
+            icon={<ThumbsUp size={20} />}
+            label="Beğendiğim Videolar"
+            isOpen={isOpen}
+          />
         </nav>
       </aside>
     </>
