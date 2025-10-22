@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import SearchBar from "../Search/SearchBar";
 
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,10 @@ export default function Layout() {
           <div className="flex items-center  pl-12">
             <h1 className="font-bold text-lg cursor-pointer">VidLoad</h1>
           </div>
+          {/* Search Kısmı */}
+          {/* <SearchBar
+            onSearch={(query) => console.log("Searching for:", query)}
+          ></SearchBar> */}
 
           {/* Sağ kısım - Linkler */}
           <ul className="flex flex-wrap justify-end items-center space-x-5 sm:gap-6 text-sm sm:text-base">
