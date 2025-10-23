@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import SearchBar from "../Search/SearchBar";
 
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(false);
